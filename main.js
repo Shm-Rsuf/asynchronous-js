@@ -25,7 +25,7 @@ function renderData(country) {
 }
 
 //promise in javascript
-console.log("welcome");
+/* console.log("welcome");
 //create promise
 const promise = new Promise((resolve, reject) => {
   let isPromise = true;
@@ -44,4 +44,41 @@ promise
     console.log(err);
   });
 
-console.log("end");
+console.log("end"); */
+
+// promise chaining
+
+const promiseOne = () => {
+  return new Promise((resolve, reject) => {
+    resolve("promise one is completed");
+  });
+};
+const promiseTwo = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("promise Two is completed");
+    }, 2000);
+  });
+};
+const promiseThree = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("promise Three is completed");
+    }, 4000);
+  });
+};
+const promiseFour = () => {
+  return new Promise((resolve, reject) => {
+    resolve("promise Four is completed");
+  });
+};
+
+promiseOne()
+  .then((res) => console.log(res))
+  .then(promiseTwo)
+  .then((res) => console.log(res))
+  .then(promiseThree)
+  .then((res) => console.log(res))
+  .then(promiseFour)
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err));
