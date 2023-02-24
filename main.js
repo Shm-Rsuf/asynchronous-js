@@ -73,12 +73,25 @@ const promiseFour = () => {
   });
 };
 
-promiseOne()
-  .then((res) => console.log(res))
-  .then(promiseTwo)
-  .then((res) => console.log(res))
-  .then(promiseThree)
-  .then((res) => console.log(res))
-  .then(promiseFour)
-  .then((res) => console.log(res))
-  .catch((err) => console.log(err));
+// promiseOne()
+//   .then((res) => console.log(res))
+//   .then(promiseTwo)
+//   .then((res) => console.log(res))
+//   .then(promiseThree)
+//   .then((res) => console.log(res))
+//   .then(promiseFour)
+//   .then((res) => console.log(res))
+//   .catch((err) => console.log(err));
+
+const setAllTask = async () => {
+  let t1 = await promiseOne();
+  console.log(t1);
+  let t2 = await promiseTwo();
+  console.log(t2);
+  let t3 = await promiseThree();
+  console.log(t3);
+  let t4 = await promiseFour();
+  console.log(t4);
+};
+
+setAllTask();
