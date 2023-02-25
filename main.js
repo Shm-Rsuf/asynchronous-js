@@ -48,7 +48,7 @@ console.log("end"); */
 
 // promise chaining
 
-const promiseOne = () => {
+/* const promiseOne = () => {
   return new Promise((resolve, reject) => {
     resolve("promise one is completed");
   });
@@ -71,19 +71,19 @@ const promiseFour = () => {
   return new Promise((resolve, reject) => {
     resolve("promise Four is completed");
   });
-};
+}; */
+/* 
+promiseOne()
+  .then((res) => console.log(res))
+  .then(promiseTwo)
+  .then((res) => console.log(res))
+  .then(promiseThree)
+  .then((res) => console.log(res))
+  .then(promiseFour)
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err)); */
 
-// promiseOne()
-//   .then((res) => console.log(res))
-//   .then(promiseTwo)
-//   .then((res) => console.log(res))
-//   .then(promiseThree)
-//   .then((res) => console.log(res))
-//   .then(promiseFour)
-//   .then((res) => console.log(res))
-//   .catch((err) => console.log(err));
-
-const setAllTask = async () => {
+/* const setAllTask = async () => {
   let t1 = await promiseOne();
   console.log(t1);
   let t2 = await promiseTwo();
@@ -94,4 +94,94 @@ const setAllTask = async () => {
   console.log(t4);
 };
 
-setAllTask();
+setAllTask(); */
+
+//fetch api for calling data
+/* 
+fetch("https://jsonplaceholder.typicode.com/posts", {
+  method: "POST",
+  headers: {
+    "Content-type": "application/json",
+  },
+  body: JSON.stringify({
+    title: "ruponty",
+    body: "mrinmoye",
+    userId: 1,
+  }),
+})
+  .then((res) => {
+    if (!res.ok) {
+      let message = `Error : ${res.status}`;
+      throw new Error(message);
+    }
+    return res.json();
+  })
+  .then((res) => console.log(res))
+  .catch((err) => {
+    console.log(err.message);
+  });
+ */
+
+const makeRequest = async (url, config) => {
+  const res = await fetch(url, config);
+  if (!res.ok) {
+    throw new Error(`Error : ${res.status}, not found`);
+  }
+  const data = await res.json();
+  return data;
+};
+
+const deleteData = () => {
+  makeRequest("https://jsonplaceholder.typicode.com/posts/1", {
+    method: "DELETE",
+  })
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err.message));
+};
+
+deleteData();
+
+/* const updateData = () => {
+  makeRequest("https://jsonplaceholder.typicode.com/posts/1", {
+    method: "PUT",
+    body: JSON.stringify({
+      id: 1,
+      title: "ruponty",
+      body: "mrinmoye",
+      userId: 1,
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err.message));
+};
+
+updateData(); */
+
+/* const sendData = () => {
+  makeRequest("https://jsonplaceholder.typicode.com/posts", {
+    method: "POST",
+    body: JSON.stringify({
+      title: "ruponty",
+      body: "mrinmoye",
+      userId: 1,
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+    },
+  })
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err.message));
+}; 
+sendData()
+*/
+
+/* const getData = () => {
+  makeRequest("https://jsonplaceholder.typicode.com/posts")
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err.message));
+}; 
+getData()
+*/
