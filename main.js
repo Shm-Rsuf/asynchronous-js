@@ -122,16 +122,16 @@ fetch("https://jsonplaceholder.typicode.com/posts", {
   });
  */
 
-const makeRequest = async (url, config) => {
+/* const makeRequest = async (url, config) => {
   const res = await fetch(url, config);
   if (!res.ok) {
     throw new Error(`Error : ${res.status}, not found`);
   }
   const data = await res.json();
   return data;
-};
+}; */
 
-const deleteData = () => {
+/* const deleteData = () => {
   makeRequest("https://jsonplaceholder.typicode.com/posts/1", {
     method: "DELETE",
   })
@@ -139,7 +139,7 @@ const deleteData = () => {
     .catch((err) => console.log(err.message));
 };
 
-deleteData();
+deleteData(); */
 
 /* const updateData = () => {
   makeRequest("https://jsonplaceholder.typicode.com/posts/1", {
@@ -185,3 +185,93 @@ sendData()
 }; 
 getData()
 */
+
+console.clear();
+
+// axios
+//   .get("https://jsonplaceholder.typicode.com/posts")
+//   .then((res) => console.log(res.data))
+//   .catch((err) => console.log(err));
+
+/* axios
+  .delete("https://jsonplaceholder.typicode.com/posts/1")
+  .then((res) => console.log(res.data))
+  .catch((err) => console.log(err)); */
+
+/* axios
+  .put("https://jsonplaceholder.typicode.com/posts/1", {
+    body: JSON.stringify({
+      id: 1,
+      title: "sabiha",
+      body: "mrinmoye",
+      userId: 1,
+    }),
+  })
+  .then((res) => console.log(res.data))
+  .catch((err) => console.log(err)); */
+
+/* axios
+  .post("https://jsonplaceholder.typicode.com/posts", {
+    body: JSON.stringify({
+      title: "ruponty",
+      body: "mrinmoye",
+      userId: 1,
+    }),
+  })
+  .then((res) => console.log(res.data))
+  .catch((err) => console.log(err)); */
+
+/* const makeAxiosRequest = async (config) => {
+  return await axios(config);
+};
+ */
+
+/* deleteData = () => {
+  makeAxiosRequest({
+    url: "https://jsonplaceholder.typicode.com/posts/1",
+    method: "delete",
+  })
+    .then((res) => console.log(res.data))
+    .catch((err) => console.log(err));
+};
+deleteData(); */
+
+/* updateData = () => {
+  makeAxiosRequest({
+    url: "https://jsonplaceholder.typicode.com/posts/1",
+    method: "put",
+    data: JSON.stringify({
+      id: 1,
+      title: "sabiha",
+      body: "tasnim",
+      userId: 1,
+    }),
+  })
+    .then((res) => console.log(res.data))
+    .catch((err) => console.log(err));
+};
+updateData(); */
+
+/* setData = () => {
+  makeAxiosRequest({
+    url: "https://jsonplaceholder.typicode.com/posts",
+    method: "post",
+    data: JSON.stringify({
+      title: "ruponty",
+      body: "mrinmoye",
+      userId: 1,
+    }),
+  })
+    .then((res) => console.log(res.data))
+    .catch((err) => console.log(err));
+};
+
+setData(); */
+
+/* getData = () => {
+  makeAxiosRequest("https://jsonplaceholder.typicode.com/posts")
+    .then((res) => console.log(res.data))
+    .catch((err) => console.log(err));
+};
+
+getData(); */
