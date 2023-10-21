@@ -1,277 +1,82 @@
-const wrapper = document.querySelector(".country-wrapper");
-/****************asynchronous javascript******************/
-const request = new XMLHttpRequest();
-request.open("GET", "https://restcountries.com/v2/name/argentina");
-request.send();
+/* syncronous javascript */
 
-// console.log(request.responseText);
+// function f1() {
+//   console.log("I am f1");
+// }
 
-request.addEventListener("load", function () {
-  const [data] = JSON.parse(this.responseText);
-  renderData(data);
-});
+// function f2() {
+//   f1();
+//   console.log("I am f2");
+// }
 
-function renderData(country) {
-  // console.log(country);
+// function f3() {
+//   f2();
+//   console.log("I am f3");
+// }
 
-  const html = `
-      <div class="country">
-        <h1>${country.name}</h1>
-        <p>${country.altSpellings[1]}</p>
-        <p>${country.capital}</p>
-        <p>${(country.population / 1000000).toFixed(2)} M people</p>
-      </div>`;
-  wrapper.insertAdjacentHTML("afterbegin", html);
-}
+// f3();
 
-//promise in javascript
-/* console.log("welcome");
-//create promise
-const promise = new Promise((resolve, reject) => {
-  let isPromise = true;
-  if (isPromise) {
-    resolve("Promise completed");
-  } else {
-    reject("Not completed");
-  }
-});
+/* asyncronous javascript */
+// function printMe() {
+//   console.log("Print me");
+// }
 
-promise
-  .then((res) => {
-    console.log(res);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+// function test() {
+//   console.log("I am test function");
+// }
 
-console.log("end"); */
+// setTimeout(printMe, 0);
+// test();
 
-// promise chaining
+/* Promise in javascript */
+// const type = false;
+// new Promise((resolve, reject) => {
+//   if (type) {
+//     resolve("Promise is resolved");
+//   } else {
+//     reject("Promise is rejected");
+//   }
+// })
+//   .then((resule) => console.log(resule))
+//   .catch((error) => console.log(error));
 
-/* const promiseOne = () => {
-  return new Promise((resolve, reject) => {
-    resolve("promise one is completed");
-  });
-};
-const promiseTwo = () => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve("promise Two is completed");
-    }, 2000);
-  });
-};
-const promiseThree = () => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve("promise Three is completed");
-    }, 4000);
-  });
-};
-const promiseFour = () => {
-  return new Promise((resolve, reject) => {
-    resolve("promise Four is completed");
-  });
-}; */
-/* 
-promiseOne()
-  .then((res) => console.log(res))
-  .then(promiseTwo)
-  .then((res) => console.log(res))
-  .then(promiseThree)
-  .then((res) => console.log(res))
-  .then(promiseFour)
-  .then((res) => console.log(res))
-  .catch((err) => console.log(err)); */
+/* promise and wev api's */
+// function f1() {
+//   console.log("I am f1");
+// }
 
-/* const setAllTask = async () => {
-  let t1 = await promiseOne();
-  console.log(t1);
-  let t2 = await promiseTwo();
-  console.log(t2);
-  let t3 = await promiseThree();
-  console.log(t3);
-  let t4 = await promiseFour();
-  console.log(t4);
-};
+// function f2() {
+//   console.log("I am f2");
+// }
 
-setAllTask(); */
+// function main() {
+//   console.log("I am main");
+//   setTimeout(f1, 0);
 
-//fetch api for calling data
-/* 
-fetch("https://jsonplaceholder.typicode.com/posts", {
-  method: "POST",
-  headers: {
-    "Content-type": "application/json",
-  },
-  body: JSON.stringify({
-    title: "ruponty",
-    body: "mrinmoye",
-    userId: 1,
-  }),
-})
-  .then((res) => {
-    if (!res.ok) {
-      let message = `Error : ${res.status}`;
-      throw new Error(message);
-    }
-    return res.json();
-  })
-  .then((res) => console.log(res))
-  .catch((err) => {
-    console.log(err.message);
-  });
- */
+//   new Promise((resolve, reject) => {
+//     let test = true;
+//     if (test) {
+//       resolve("I am resolve function");
+//     } else {
+//       reject("I am reject function");
+//     }
+//   })
+//     .then((result) => console.log(result))
+//     .catch((error) => console.log(error));
 
-/* const makeRequest = async (url, config) => {
-  const res = await fetch(url, config);
-  if (!res.ok) {
-    throw new Error(`Error : ${res.status}, not found`);
-  }
-  const data = await res.json();
-  return data;
-}; */
+//   f2();
+// }
 
-/* const deleteData = () => {
-  makeRequest("https://jsonplaceholder.typicode.com/posts/1", {
-    method: "DELETE",
-  })
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err.message));
-};
+// main();
 
-deleteData(); */
+/* Promise and resolve & rejected */
 
-/* const updateData = () => {
-  makeRequest("https://jsonplaceholder.typicode.com/posts/1", {
-    method: "PUT",
-    body: JSON.stringify({
-      id: 1,
-      title: "ruponty",
-      body: "mrinmoye",
-      userId: 1,
-    }),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  })
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err.message));
-};
+// const promise = new Promise(function (resolve, reject) {
+//   setTimeout(() => {
+//     reject(new Error("water not found"));
+//   }, 2000);
+// });
 
-updateData(); */
-
-/* const sendData = () => {
-  makeRequest("https://jsonplaceholder.typicode.com/posts", {
-    method: "POST",
-    body: JSON.stringify({
-      title: "ruponty",
-      body: "mrinmoye",
-      userId: 1,
-    }),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  })
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err.message));
-}; 
-sendData()
-*/
-
-/* const getData = () => {
-  makeRequest("https://jsonplaceholder.typicode.com/posts")
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err.message));
-}; 
-getData()
-*/
-
-console.clear();
-
-// axios
-//   .get("https://jsonplaceholder.typicode.com/posts")
-//   .then((res) => console.log(res.data))
-//   .catch((err) => console.log(err));
-
-/* axios
-  .delete("https://jsonplaceholder.typicode.com/posts/1")
-  .then((res) => console.log(res.data))
-  .catch((err) => console.log(err)); */
-
-/* axios
-  .put("https://jsonplaceholder.typicode.com/posts/1", {
-    body: JSON.stringify({
-      id: 1,
-      title: "sabiha",
-      body: "mrinmoye",
-      userId: 1,
-    }),
-  })
-  .then((res) => console.log(res.data))
-  .catch((err) => console.log(err)); */
-
-/* axios
-  .post("https://jsonplaceholder.typicode.com/posts", {
-    body: JSON.stringify({
-      title: "ruponty",
-      body: "mrinmoye",
-      userId: 1,
-    }),
-  })
-  .then((res) => console.log(res.data))
-  .catch((err) => console.log(err)); */
-
-/* const makeAxiosRequest = async (config) => {
-  return await axios(config);
-};
- */
-
-/* deleteData = () => {
-  makeAxiosRequest({
-    url: "https://jsonplaceholder.typicode.com/posts/1",
-    method: "delete",
-  })
-    .then((res) => console.log(res.data))
-    .catch((err) => console.log(err));
-};
-deleteData(); */
-
-/* updateData = () => {
-  makeAxiosRequest({
-    url: "https://jsonplaceholder.typicode.com/posts/1",
-    method: "put",
-    data: JSON.stringify({
-      id: 1,
-      title: "sabiha",
-      body: "tasnim",
-      userId: 1,
-    }),
-  })
-    .then((res) => console.log(res.data))
-    .catch((err) => console.log(err));
-};
-updateData(); */
-
-/* setData = () => {
-  makeAxiosRequest({
-    url: "https://jsonplaceholder.typicode.com/posts",
-    method: "post",
-    data: JSON.stringify({
-      title: "ruponty",
-      body: "mrinmoye",
-      userId: 1,
-    }),
-  })
-    .then((res) => console.log(res.data))
-    .catch((err) => console.log(err));
-};
-
-setData(); */
-
-/* getData = () => {
-  makeAxiosRequest("https://jsonplaceholder.typicode.com/posts")
-    .then((res) => console.log(res.data))
-    .catch((err) => console.log(err));
-};
-
-getData(); */
+// promise.catch(function (error) {
+//   console.log(error.message);
+// });
