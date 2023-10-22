@@ -80,3 +80,19 @@
 // promise.catch(function (error) {
 //   console.log(error.message);
 // });
+
+/* callback function */
+// orderFood("test", "test", print);
+
+// function print(msg) {
+//   console.log(msg);
+// }
+
+// function orderFood(test, test, callback) {
+//   console.log(`Your ${test}, ${test} is ordered`);
+
+//   setTimeout(() => {
+//     const msg = `Your ${test}, ${test} is ready`;
+//     callback(msg);
+//   }, 3000);
+// }
